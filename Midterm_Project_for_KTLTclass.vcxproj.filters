@@ -35,9 +35,6 @@
     <ClCompile Include="IO_files.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="Optimze_algorithm.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
     <ClCompile Include="test_algo.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -51,6 +48,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Supporting_functions.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Optimize_algorithm.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>

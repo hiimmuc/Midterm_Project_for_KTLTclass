@@ -12,7 +12,6 @@ int find_min(int* arr, int size) {
 	for (int i = 0; i < size; ++i) {
 		min = min <= arr[i] ? min : arr[i];
 	}
-
 	return min;
 }
 //subtract func in step 1 and 2
@@ -59,18 +58,12 @@ int** subtract_mat_2(int** mat, int** masked_mat, int num_of_rows, int num_of_co
 		for (j = 0; j < num_of_cols; ++j) {
 			//1,2
 			if (masked_mat[i][j] == 0) {
-				temp1 = mat[i][j];
-				temp[k] = temp1;
+				temp[k] =  mat[i][j];
 				++k;//number of non-zero element
 			}
 		}
 	}
-	printf_s("sorted arr: \n");
-	for (i = 0; i < k; ++i) {
-		printf_s("%d ", temp[i]);
-	}
 	min = find_min(temp, k);
-	printf_s("\nmin value in array: %d \n", min);
 	//3 subtract
 	for (i = 0; i < num_of_rows; ++i) {
 		for (j = 0; j < num_of_cols; ++j) {
@@ -346,7 +339,6 @@ int** hungarian_algo(int** input_mat, int num_of_rows, int num_of_cols)
 		//we can assign
 		pre_ans = assign_mat(process_mat, num_of_rows, num_of_cols);
 		//convert to output mat(2xn)
-		printf_s("\nresult: \nthe number in square bracket is the order of that person in matrix\n");
 		for (i = 0; i < num_of_rows; ++i) {
 			for (j = 0; j < num_of_cols; ++j) {
 				if (pre_ans[i][j] == -8) {

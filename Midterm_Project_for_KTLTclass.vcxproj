@@ -147,7 +147,7 @@
     <ClCompile Include="Calculation_functions.cpp" />
     <ClCompile Include="IO_files.cpp" />
     <ClCompile Include="Main_Program.c" />
-    <ClCompile Include="Optimze_algorithm.cpp" />
+    <ClCompile Include="Optimize_algorithm.c" />
     <ClCompile Include="Supporting_functions.cpp" />
     <ClCompile Include="test_algo.c" />
     <ClCompile Include="test_cal_func.c" />
