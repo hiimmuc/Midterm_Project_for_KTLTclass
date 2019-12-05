@@ -42,13 +42,6 @@ void main(int argc, char* argv[]) {
 	int** drivers = allocate(row, 2);
 	int** cus_initp = allocate(col, 2);
 	int** cus_finalp = allocate(col, 2);
-	//input test case
-	//printf_s("enter test case\n\drivers_position:\n");
-	//scan_mat(drivers, row, 2);
-	//printf_s("cus_init_position:\n");
-	//scan_mat(cus_initp, col, 2);
-	//printf_s("cus_final_position:\n");
-	//scan_mat(cus_finalp, col, 2);
 	//system("cls");
 	//printf map
 	//print_map(drivers, cus_initp, row, col);
@@ -57,16 +50,9 @@ void main(int argc, char* argv[]) {
 	copy_mat(cus_finalp, CusCfpMat, num_of_cus, 2);
 	//pr0cess
 	mat = calculate_distances(drivers, cus_initp, cus_finalp, col, row);
-	print_mat(mat, row, col);
 	//process
 	result = hungarian_algo(mat, row, col);
-	//print result
-	printf_s("\n\nresult(output_matrix)):\n\
-1st col for number of customer\n\
-2nd col for number of drivers\n\
-3rd col for respective distance");
-	print_mat(result, row, 3);
-	//
+    //
 	result_2 = calculate_time_and_fee(result, drivers, cus_initp, cus_finalp, row, col);
 	printf_s("\n\nresult(output_matrix2)):\n\
 1st col for number of customer\n\
