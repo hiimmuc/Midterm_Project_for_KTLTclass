@@ -366,37 +366,3 @@ int** hungarian_algo(int** input_mat, int num_of_rows, int num_of_cols)
 	num_of_cols = temp2;
 	return final_result;
 }
-//void print_map(int** driver, int** cus_initp, int numd, int numc)
-//{
-//	printf_s("\n/*===============MAP==============*/\n");
-//	printf_s("\n");
-//	for (int i = 9; i >= 0; --i) {
-//		printf_s("%d", i);
-//		for (int a = 0; a < numd; ++a) {
-//				for (int j = 1; j <=9; ++j)
-//				{
-//					
-//					if (j == driver[a][0] && i == driver[a][1]) {
-//						printf_s("D---");
-//					}
-//					else
-//						printf_s("|---");
-//					if (j == cus_initp[a][0] && i == cus_initp[a][1]) {
-//						printf_s("C---");
-//					}
-//					if (j == 9) {
-//						printf_s("|");
-//						break;
-//					}
-//					else
-//						printf_s("|---");
-//				}
-//				printf_s("\n");
-//			
-//		}
-//	}
-//	for (int i = 0; i <= 9; i++) {
-//		printf_s("%2d  ", i);
-//	}
-//
-//} //logical error
