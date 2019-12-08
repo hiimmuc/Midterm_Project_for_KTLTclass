@@ -9,18 +9,15 @@
 #include "Calculation_functions.h"
 #include "Optimize_algorithm.h"
 
-////should test for nxn case
-
 void main(int argc, char* argv[]) {
 	printf_s("/*==========HELLO=========*/\n");
-	//kind of maps
+	//input part
 	int num_of_cus = count("customer_data.txt");//count customers
 	int num_of_drv = count("driver_data.txt");//count drivers
-
+	//allocate memory for cus and drvs
 	customer* c = (customer*)calloc(num_of_cus, sizeof(customer));
-	// allocate memory for number of customers counted above
 	driver* d = (driver*)calloc(num_of_drv, sizeof(driver));
-	//same as above
+	//
 	constructC(num_of_cus, c);
 	constructD(num_of_drv, d);
 	int** cusCipMat = allocate(num_of_cus, 2);//allocate memory for cip mattrix
@@ -43,17 +40,16 @@ void main(int argc, char* argv[]) {
 	int** cus_initp = allocate(col, 2);
 	int** cus_finalp = allocate(col, 2);
 	//system("cls");
-	//printf map
-	//print_map(drivers, cus_initp, row, col);
 	copy_mat(drivers, DrvDpMat, num_of_drv, 2);
 	copy_mat(cus_initp, cusCipMat, num_of_cus, 2);
 	copy_mat(cus_finalp, CusCfpMat, num_of_cus, 2);
 	//pr0cess
 	mat = calculate_distances(drivers, cus_initp, cus_finalp, col, row);
+	print_mat(mat, row, col);
 	//process
 	result = hungarian_algo(mat, row, col);
-    //
-	result_2 = calculate_time_and_fee(result, drivers, cus_initp, cus_finalp, row, col);
+	print_mat(result, row, 3);
+	result_2 = calculate_time_and_fee(result, drivers, cus_initp, cus_finalp, row, col, 1);
 	printf_s("\n\nresult(output_matrix2)):\n\
 1st col for number of customer\n\
 2nd col for number of drivers\n\
@@ -61,7 +57,13 @@ void main(int argc, char* argv[]) {
 4th col for estimated time arriving final point\n\
 5th col for the total money");
 	print_mat(result_2, num_task, 5);
-	//end game
+	billForCus* Bills = (billForCus*)malloc(num_of_cus * sizeof(billForCus));
+	constructBill(num_of_cus, Bills, result_2, c, d);
+	printBill(num_of_cus, Bills);
+	printf_s("\nDone!!!");
+
+	//free memories
+	free(c); free(d); free_al(cusCipMat,num_of_cus,2); free_al(CusCfpMat, num_of_cus, 2); free_al(DrvDpMat, num_of_drv, 2);
 	free_al(result_2, num_task, 5);
 	free_al(cus_finalp, col, 2); free_al(drivers, row, 2); free_al(cus_initp, col, 2);
 	free_al(mat, row, col);
