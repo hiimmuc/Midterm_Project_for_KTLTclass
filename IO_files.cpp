@@ -4,6 +4,7 @@
 #include <malloc.h>
 #include <math.h>
 #include <string>
+#include <string.h>
 #include "Supporting_functions.h"
 #include "IO_files.h"
 
@@ -139,5 +140,44 @@ void getDrvDp(int** DrvDpMat, driver* d, int numOfDrv) {
     for (int i = 0; i < numOfDrv; i++) {
         DrvDpMat[i][0] = d[i].dp[0];
         DrvDpMat[i][1] = d[i].dp[1];
+    }
+}
+billForCus* constructBill(int num, billForCus* bill, int** timeFeeMat, customer* c, driver* d) {
+    // for test, incompleted, fields must be assigned with correct linked couple
+    int i;
+    for (i = 0; i < num; i++) {
+        int cus = timeFeeMat[i][1];
+
+        bill[i].cusName = c[cus].name;
+        // strtok(bill[i].cusName,"\n");
+        // strcat(bill[i].cusName,".txt");
+        // int drv=timeFeeMat[i][1];
+        bill[i].drvName = d[i].name;
+        bill[i].pltNum = d[i].numberPlt;
+        bill[i].fee = timeFeeMat[i][4];
+        bill[i].time1 = timeFeeMat[i][2];
+        bill[i].time2 = timeFeeMat[i][3];
+    }
+    return bill;
+}
+void printBill(int numOfBill, billForCus* bill) {
+    FILE* fp;
+    char* buf;
+    char* filename;
+    int i;
+    fflush(stderr);
+    for (i = 0; i < numOfBill; i++) {
+        filename = (char*)malloc((strlen(bill[i].cusName) + 7) * sizeof(char));
+        buf = (char*)malloc(1000 * sizeof(char));
+        sprintf(filename, "%s.txt", bill[i].cusName);
+        fp = fopen(filename, "w+");
+        sprintf(buf, "Your driver: %s\t plate number:%s\n Your fee: %d\n estimate departure time: %d\n estimate arrival time: %d\n", bill[i].drvName, bill[i].pltNum, bill[i].fee, bill[i].time1, bill[i].time2);
+        
+        fputs(buf, fp);
+        fclose(fp);
+    
+        free(buf);
+        free(filename);
+        
     }
 }
