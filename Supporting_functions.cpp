@@ -18,7 +18,7 @@ int** allocate(int number_of_row, int number_of_cols) {
 //free func
 void free_al(int** arr, int number_of_rows, int number_of_cols) {
 	for (int i = 0; i < number_of_rows; ++i) {
-		free(arr[i]);
+		free(*(arr + i));
 	}
 	free(arr);
 }
@@ -53,37 +53,38 @@ void copy_mat(int** arr1, int** arr2, int numofrows, int numofcols) {
 		}
 	}
 }
-//void print_map(int** driver, int** cus_initp, int numd, int numc)
-//{
-//	printf_s("\n/*===============MAP==============*/\n");
-//	printf_s("\n");
-//	for (int i = 9; i >= 0; --i) {
-//		printf_s("%d", i);
-//		for (int a = 0; a < numd; ++a) {
-//				for (int j = 1; j <=9; ++j)
-//				{
-//					
-//					if (j == driver[a][0] && i == driver[a][1]) {
-//						printf_s("D---");
-//					}
-//					else
-//						printf_s("|---");
-//					if (j == cus_initp[a][0] && i == cus_initp[a][1]) {
-//						printf_s("C---");
-//					}
-//					if (j == 9) {
-//						printf_s("|");
-//						break;
-//					}
-//					else
-//						printf_s("|---");
-//				}
-//				printf_s("\n");
-//			
-//		}
-//	}
-//	for (int i = 0; i <= 9; i++) {
-//		printf_s("%2d  ", i);
-//	}
-//
-//} //logical error
+//print_map
+void print_map(int** driver, int** cus_initp, int numd, int numc) {
+	char** coordinate = (char**)malloc(11 * sizeof(char*));
+	for (int i = 0; i < 11; ++i) {
+		coordinate[i] = (char*)malloc(11 * sizeof(char));
+	}
+	for (int i = 0; i < 11; ++i) coordinate[0][i] = (char)(47 + i);
+	for (int j = 0; j < 11; ++j) coordinate[j][0] = (char)(47 + j);
+	coordinate[0][0] = '*';
+	for (int i = 1; i < 11; ++i) {
+		for (int j = 1; j < 11; ++j) {
+			coordinate[i][j] = '+';
+		}
+	}
+	for (int i = 1; i < 11; ++i) {
+		for (int j = 1; j < 11; ++j) {
+			for (int k = 0; k < numc; ++k) {
+				if (i == (cus_initp[k][0] + 1) && j == (cus_initp[k][1] + 1))
+					coordinate[i][j] = 'C';
+			}
+			for (int k = 0; k < numd; ++k) {
+				if (i == (driver[k][0] + 1) && j == (driver[k][1] + 1)) {
+					if (coordinate[i][j] == 'C')  coordinate[i][j] = 'X';
+					else coordinate[i][j] = 'D';
+				}
+			}
+		}
+	}
+	for (int i = 10; i >= 0; --i) {
+		for (int j = 0; j < 11; ++j) {
+			printf_s("%4c", coordinate[i][j]);
+		}
+		printf_s("\n"); printf_s("\n");
+	}
+}

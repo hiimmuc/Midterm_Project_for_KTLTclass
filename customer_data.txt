@@ -8,19 +8,9 @@ Nguyen Minh Chinh
 Departing point: [2;9]
 Arriving point: [7;3]
 =
-Doan Duy Thiem
-0964750517
-Departing point: [4;6]
-Arriving point: [1;7]
-=
-Nguyen Tien Dung
-0234876122
-Departing point: [9;6]
-Arriving point: [2;8]
-=
-Hoang Nam
-0123282763
-Departing point: [8;4]
-Arriving point: [3;7]
+Phuong Nam Dang
+0912582757
+Departing point: [5;8]
+Arriving point: [2;0]
 =
 end
