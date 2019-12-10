@@ -26,7 +26,7 @@ extern "C" {
         char* cusName;
         char* drvName;
         char* pltNum;
-        int fee, time1, time2;
+        int cash, time1, time2;
     };
     typedef struct BillForCus billForCus;
 
@@ -40,7 +40,7 @@ extern "C" {
     void getCusCfp(int** CusCfpMat, customer* c, int numOfCus);
     void getDrvDp(int** DrvDpMat, driver* d, int numOfDrv);
     //output part
-    billForCus* constructBill(int num, billForCus* bill, int** timeFeeMat, customer* c, driver* d);
+    billForCus* constructBill(int num, billForCus* bill, int** timeCashMat, customer* c, driver* d);
     void printBill(int numOfBill, billForCus* bill);
 #ifdef __cplusplus
 }

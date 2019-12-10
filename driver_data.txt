@@ -1,4 +1,4 @@
-Mr bean
+ghost rider
 023456789
 29s134567
 position [4;7]
@@ -12,15 +12,5 @@ paul walker
 0987162534
 346f7
 position [9;1]
-=
-Chrissssssssssssssss
-0987615244
-34g67
-position [5;7]
-=
-Hopper Kirk
-0987615243
-56j87
-position [3;6]
 =
 end

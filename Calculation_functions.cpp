@@ -5,7 +5,7 @@
 #define vel 30
 #define price 10000
 
-int** calculate_distances(int** drivers, int** customers_initp, int** customers_finalp, int num_of_customers, int  num_of_drivers) {
+int** calculate_distances(int** drivers, int** customers_initp, int** customers_finalp, int num_of_drivers, int  num_of_customers) {
 	int** distances = allocate(num_of_drivers, num_of_customers);
 	int distance = 0, distance_final = 0, distance_start = 0;
 	for (int i = 0; i < num_of_drivers; i++)
@@ -43,7 +43,7 @@ int** calculate_time_and_fee(int** input_mat, int** drivers, int** customers_ini
 					}
 					ans[i][2] = (int)((distance_start * 60) / vel);
 					ans[i][3] = (int)((distance_final * 60) / vel);
-					ans[i][4] = (int)(input_mat[i][2] * price);
+					ans[i][4] = (int)(distance_final * price);
 					distance_final = 0;
 					distance_start = 0;
 				}

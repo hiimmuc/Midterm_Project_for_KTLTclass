@@ -12,8 +12,7 @@ extern "C" {
 	void print_mat(int** arr, int num_of_rows, int num_of_cols);
 	int** scan_mat(int** arr, int num_of_rows, int num_of_cols);
 	void copy_mat(int** mat1, int** mat2, int row, int col);
-	//beta
-	//void print_map(int** driver, int** cus_initp, int numd, int numc);
+	void print_map(int** driver, int** cus_initp, int numd, int numc);
 #ifdef __cplusplus
 }
 #endif

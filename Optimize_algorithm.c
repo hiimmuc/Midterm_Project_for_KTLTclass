@@ -6,7 +6,7 @@
 #include "Optimize_algorithm.h"
 
 //===========================MAIN PART====================================//
-//find minimum element  //errors
+//find minimum element 
 int find_min(int *arr, int size) {
 	int min=arr[0];
 	for (int i = 0; i < size; ++i) {
@@ -15,6 +15,7 @@ int find_min(int *arr, int size) {
 
 	return min;
 }
+//subtract func in step 1 and 2
 int** subtract_mat_1(int** mat, int num_of_rows, int num_of_cols) {
 	int min = 0;
 	int i, j, k = 0;
@@ -260,7 +261,6 @@ int count_crossed_line_by_row(int** mat, int num_of_rows, int num_of_cols) {
 }
 //if the number of line equal number of tasks, we assign
 /*==================================================================*/
-
 int** assign_mat(int** assignable_mat, int num_of_rows, int num_of_cols) {
 	/*make the assign point become -8(for team8) :D*/
 	int** ans = allocate(num_of_rows, num_of_cols);
@@ -277,7 +277,7 @@ int** assign_mat(int** assignable_mat, int num_of_rows, int num_of_cols) {
 	//count zero in each row and col
 	for (i = 0; i < num_of_rows; ++i) {
 		for (j = 0; j < num_of_cols; ++j) {
-			if (ans[i][j] == 0) {
+			if (temp1[i][j] == 0 && temp2[i][j] == 0) {
 				count_row[i] += 1;
 				count_col[j] += 1;
 			}
@@ -362,7 +362,7 @@ int** assign_mat(int** assignable_mat, int num_of_rows, int num_of_cols) {
 	if (count_1 == num_of_task) {
 		copy_mat(ans, temp1, num_of_rows, num_of_cols);
 	}
-	if (count_2 == num_of_task) {
+	else if (count_2 == num_of_task) {
 		copy_mat(ans, temp2, num_of_rows, num_of_cols);
 	}
 	free(count_row); free(count_col); free_al(temp1, num_of_rows, num_of_cols); free_al(temp2, num_of_rows, num_of_cols);
@@ -438,7 +438,7 @@ int** hungarian_algo(int** input_mat, int num_of_rows, int num_of_cols)
 	if (number_of_crossed_lines == num_task) {
 		//we can assign
 		pre_ans = assign_mat(process_mat, num_of_rows, num_of_cols);
-		//convert to output mat(2xn)
+		//convert to output mat(n x 3)
 		for (i = 0; i < num_of_rows; ++i) {
 			for (j = 0; j < num_of_cols; ++j) {
 				if (pre_ans[i][j] == -8) {
