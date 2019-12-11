@@ -1,7 +1,7 @@
 /==========Your Bills==========/
-Your driver: paul walker	 plate number:346f7
+Your driver: paul walker	 plate number: [346f7]
 
->Estimate departure time: 22 minutes
->Estimate arrival time: 22minutes
->>Please prepare total cash: 220000,000 VND
+>Estimate departure time: 8 minutes
+>Estimate arrival time: 16 minutes
+>>Please prepare total cash: 80,000 VND
 ******THANKS FOR USING OUR SERVICE******

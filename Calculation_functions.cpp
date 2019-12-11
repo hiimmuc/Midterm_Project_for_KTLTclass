@@ -36,13 +36,13 @@ int** calculate_time_and_fee(int** input_mat, int** drivers, int** customers_ini
 	for (int i = 0; i < number_of_tasks; ++i) {
 		for (int a = 0; a < number_of_drivers; ++a) {
 			for (int b = 0; b < num_of_cus; ++b) {
-				if (ans[i][0] == a && ans[i][1] == b) {
+				if (ans[i][0] == b && ans[i][1] == a) {
 					for (int c = 0; c < 2; ++c) {
-						distance_start = distance_start + abs(drivers[a][c] - customers_initp[b][c]);
+						distance_start = distance_start + abs(drivers[a][c] - customers_initp[b][c]) /*+ input_mat[i][0] - ((vel * present_time) / 60)*/;
 						distance_final = distance_final + abs(customers_initp[b][c] - customers_finalp[b][c]);
 					}
-					ans[i][2] = (int)((distance_start * 60) / vel);
-					ans[i][3] = (int)((distance_final * 60) / vel);
+					ans[i][2] = (int)(((distance_start * 60) / vel));
+					ans[i][3] = (int)(((distance_final * 60) / vel));
 					ans[i][4] = (int)(distance_final * price);
 					distance_final = 0;
 					distance_start = 0;

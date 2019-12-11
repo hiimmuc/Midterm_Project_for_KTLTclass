@@ -50,19 +50,26 @@ void main(int argc, char* argv[]) {
 	//process
 	result = hungarian_algo(mat, row, col);
 	result_2 = calculate_time_and_fee(result, drivers, cus_initp, cus_finalp, row, col, 1);
-	printf_s("\n\nresult(output_matrix2)):\n\
-1st col for number of customer\n\
-2nd col for number of drivers\n\
-3rd col for estimated time taken\n\
-4th col for estimated time arriving final point\n\
-5th col for the total money");
-	print_mat(result_2, num_task, 5);
+//	printf_s("\n\nresult(output_matrix2)):\n\
+//1st col for number of customer\n\
+//2nd col for number of drivers\n\
+//3rd col for estimated time taken\n\
+//4th col for estimated time arriving final point\n\
+//5th col for the total money");
+//	print_mat(result_2, num_task, 5);
 	billForCus* Bills = (billForCus*)malloc(num_of_cus * sizeof(billForCus));
 	constructBill(num_of_cus, Bills, result_2, c, d);
 	printBill(num_of_cus, Bills);
 	printf_s("\nDone!!!");
+	for (int i = 0; i < num_task; ++i) {
+		printf_s("\n>Driver [%d] in (%d,%d) please move to ( %d, %d) to take customer [%d]\n\
+>Estimated time: %d minutes\n\
+>Take customer to ( %d, %d) in %d minutes\n\
+>>Total cash: %d,000 VND\n>>THANK YOU<<\n***", result_2[i][1] + 1, drivers[i][0], drivers[i][1], cus_initp[result_2[i][0]][0], cus_initp[result_2[i][0]][1], result_2[i][0] + 1, result_2[i][2], cus_finalp[result_2[i][0]][0], cus_finalp[result_2[i][0]][1], result_2[i][3], result_2[i][4]);
+	}
 	//free memories
-	free(c); free(d); free_al(cusCipMat,num_of_cus,2); free_al(CusCfpMat, num_of_cus, 2); free_al(DrvDpMat, num_of_drv, 2);
+	free(c); free(d); 
+	free_al(cusCipMat,num_of_cus,2); free_al(CusCfpMat, num_of_cus, 2); free_al(DrvDpMat, num_of_drv, 2);
 	free_al(result_2, num_task, 5);
 	free_al(cus_finalp, col, 2); free_al(drivers, row, 2); free_al(cus_initp, col, 2);
 	free_al(mat, row, col);

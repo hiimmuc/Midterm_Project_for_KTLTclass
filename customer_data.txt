@@ -10,7 +10,7 @@ Arriving point: [7;3]
 =
 Phuong Nam Dang
 0912582757
-Departing point: [5;8]
-Arriving point: [2;0]
+Departing point: [8;4]
+Arriving point: [3;7]
 =
 end
