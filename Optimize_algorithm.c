@@ -438,6 +438,7 @@ int** hungarian_algo(int** input_mat, int num_of_rows, int num_of_cols)
 	if (number_of_crossed_lines == num_task) {
 		//we can assign
 		pre_ans = assign_mat(process_mat, num_of_rows, num_of_cols);
+		//printf_s("\nAssigned_mat:\n");print_mat(pre_ans, num_of_rows, num_of_cols); //enable when testing
 		//convert to output mat(n x 3)
 		for (i = 0; i < num_of_rows; ++i) {
 			for (j = 0; j < num_of_cols; ++j) {
