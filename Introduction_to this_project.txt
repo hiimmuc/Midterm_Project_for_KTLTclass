@@ -1,3 +1,8 @@
-﻿dear sir,
-if u r reading this file, it means we r successfully submit our project to u
-hello thầy :d
+﻿Our project is about the optimization of work assignment for transportaion network company such as grab, GoViet;..
+
+first, we create a file of driver's informations including: name, plate number , phonenumber, and their position(x,y);
+secondly, we create a file of customer's informations including: name phonenumber, and their present position(x,y) and their final position(x,y);
+next we read those in formation from both files, and calculation the distances drivers have to go with each customers and process them;
+after that we got some couples of driver and customer matched
+then we print bill for customers to seperate file with the file name is the name of customer, and also print to console the command to each driver and ask them to confirm
+

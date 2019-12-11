@@ -9,7 +9,7 @@
 #include "Calculation_functions.h"
 #include "Optimize_algorithm.h"
 
-void main(int argc, char* argv[]) {
+int main(int argc, char* argv[]) {
 	printf_s("/*==========HELLO=========*/\n");
 	//input part
 	int num_of_cus = count("customer_data.txt");//count customers
@@ -43,30 +43,56 @@ void main(int argc, char* argv[]) {
 	copy_mat(drivers, DrvDpMat, num_of_drv, 2);
 	copy_mat(cus_initp, cusCipMat, num_of_cus, 2);
 	copy_mat(cus_finalp, CusCfpMat, num_of_cus, 2);
-	printf_s("\n\t/*============ M A P ============*/\n\n");
+	printf_s("\n /*============ Map of positions ============*/\n\n");
 	print_map(drivers, cus_initp, row, col);
 	//pr0cess
+	//calulate distances
 	mat = calculate_distances(drivers, cus_initp, cus_finalp, row, col);
-	//process
+	//optimize
 	result = hungarian_algo(mat, row, col);
-	result_2 = calculate_time_and_fee(result, drivers, cus_initp, cus_finalp, row, col, 1);
+	//calculate time and cash
+	result_2 = calculate_time_and_cash(result, drivers, cus_initp, cus_finalp, row, col, 1);
 	//print bill
 	billForCus* Bills = (billForCus*)malloc(num_of_cus * sizeof(billForCus));
 	constructBill(num_of_cus, Bills, result_2, c, d);
 	printBill(num_of_cus, Bills);
-	printf_s("\nDone!!!");
+	//print commands
+	char ans;
+	printf_s("\nPress any keys to continue.....");
+	_getch();
+	printf_s("\nCommand List:\n");
 	for (int i = 0; i < num_task; ++i) {
-		printf_s("\n>Driver [%d] in (%d,%d) please move to ( %d, %d) to take customer [%d]\n\
->Estimated time: %d minutes\n\
->Take customer to ( %d, %d) in %d minutes\n\
->>Total cash: %d,000 VND\n>>THANK YOU<<\n\
-***", result_2[i][1] + 1, drivers[i][0], drivers[i][1], cus_initp[result_2[i][0]][0], cus_initp[result_2[i][0]][1], result_2[i][0] + 1, result_2[i][2], cus_finalp[result_2[i][0]][0], cus_finalp[result_2[i][0]][1], result_2[i][3], result_2[i][4]);
+		system("cls");
+		printf_s("\n/>Driver [%d] in ( %d, %d) please move to ( %d, %d) to take customer [%d]\n\
+ >Estimated time: %d minutes\n\
+ >Take customer to ( %d, %d) in %d minutes\n\
+ >Customer phone: %s\n\
+ >>Total cash: %d,000 VND\n>>THANK YOU<<\n\
+***\n", result_2[i][1] + 1, drivers[i][0], drivers[i][1], cus_initp[result_2[i][0]][0], cus_initp[result_2[i][0]][1], result_2[i][0] + 1, result_2[i][2], cus_finalp[result_2[i][0]][0], cus_finalp[result_2[i][0]][1], result_2[i][3],c[result_2[i][0]].phone, result_2[i][4]);
+		printf_s(">Driver [%d] confirm(y/n):  ", result_2[i][1] + 1); scanf_s("%c%*c", &ans); fflush(stdin);
+		if (ans == 'y' || ans == 'Y') {
+			printf_s("\n>Driver [%d] status: CONFIRMED\n", result_2[i][1] + 1);
+			printf_s("\nPress any keys to continue.....");
+			_getch();
+		}
+		else if (ans == 'n' || ans == 'N') {
+			printf_s("\n>Driver [%d] status: not confirmed\n", result_2[i][1] + 1);
+			printf_s("\nPress any keys to continue.....");
+			_getch();
+		}
 	}
+	system("cls");
+	for (int i = 0; i < num_task; ++i) {
+		printf_s("\nDriver[%d] will take customer [%d]", result[i][1] + 1, result[i][0] + 1);
+	}
+	printf_s("\n\n\tHave a nice trip\n\t ++++GOOD BYE++++\n\
+/*===========================================================*/");
 	//free memories
 	free(c); free(d); free_al(cusCipMat,num_of_cus,2); free_al(CusCfpMat, num_of_cus, 2); free_al(DrvDpMat, num_of_drv, 2);
 	free_al(result_2, num_task, 5);
 	free_al(cus_finalp, col, 2); free_al(drivers, row, 2); free_al(cus_initp, col, 2);
 	free_al(mat, row, col);
 	free_al(result, row, 3);
-	_getch();
+	//end
+	return 0;
 }

@@ -129,14 +129,14 @@ void getCusCip(int** CusCipMat, customer* c, int numOfCus) {
     }
 }
 void getCusCfp(int** cusCipMat, customer* c, int numOfCus) {
-    //same
+    //put customers's final position to CusCfpMat which is allocated in main function
     for (int i = 0; i < numOfCus; i++) {
         cusCipMat[i][0] = c[i].cfp[0];
         cusCipMat[i][1] = c[i].cfp[1];
     }
 }
 void getDrvDp(int** DrvDpMat, driver* d, int numOfDrv) {
-    //same
+    //put drivers's present position to DrvDpMat which is allocated in main function
     for (int i = 0; i < numOfDrv; i++) {
         DrvDpMat[i][0] = d[i].dp[0];
         DrvDpMat[i][1] = d[i].dp[1];
@@ -144,15 +144,12 @@ void getDrvDp(int** DrvDpMat, driver* d, int numOfDrv) {
 }
 /*===============================================================================================*/
 billForCus* constructBill(int num, billForCus* bill, int** timeCashMat, customer* c, driver* d) {
-    // for test, incompleted, fields must be assigned with correct linked couple
     int i;
     for (i = 0; i < num; i++) {
         int cus = timeCashMat[i][1];
-
+        //
         bill[i].cusName = c[cus].name;
-        // strtok(bill[i].cusName,"\n");
-        // strcat(bill[i].cusName,".txt");
-        // int drv=timeFeeMat[i][1];
+        bill[i].phone = d[i].phone;
         bill[i].drvName = d[i].name;
         bill[i].pltNum = d[i].numberPlt;
         bill[i].cash = timeCashMat[i][4];
@@ -172,11 +169,13 @@ void printBill(int numOfBill, billForCus* bill) {
         sprintf(filename, "%s.txt", bill[i].cusName);
         fp = fopen(filename, "w+");
         sprintf(buf, "/==========Your Bills==========/\n\
-Your driver: %s\t plate number: [%s]\n\n\
+Your driver information:\n\
+Name: %s\n\
+Phone number: %s\t plate number: [%s]\n\n\
 >Estimate departure time: %d minutes\n\
 >Estimate arrival time: %d minutes\n\
 >>Please prepare total cash: %d,000 VND\n\
-******THANKS FOR USING OUR SERVICE******", bill[i].drvName, bill[i].pltNum, bill[i].time1, bill[i].time2, bill[i].cash);
+******THANKS FOR USING OUR SERVICE******", bill[i].drvName, bill[i].phone, bill[i].pltNum, bill[i].time1, bill[i].time2, bill[i].cash);
         fputs(buf, fp);
         free(buf);
         free(filename);

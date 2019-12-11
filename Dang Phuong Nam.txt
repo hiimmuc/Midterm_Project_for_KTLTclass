@@ -1,4 +1,0 @@
-Your driver: paul walker	 plate number:=
- Your fee: 160000
- estimate departure time: 16
- estimate arrival time: 16

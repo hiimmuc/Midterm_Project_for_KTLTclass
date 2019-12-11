@@ -11,8 +11,6 @@ int** calculate_distances(int** drivers, int** customers_initp, int** customers_
 	for (int i = 0; i < num_of_drivers; i++)
 		for (int j = 0; j < num_of_customers; j++)
 		{
-			//for (int k = 0; k < cols; k++)
-			//	distances[i][j] = distances[i][j] + abs(drivers[i][k] - customers[j][k]);
 			for (int k = 0; k < 2; ++k)
 			{
 				distance_start = distance_start + abs(drivers[i][k] - customers_initp[j][k]);
@@ -25,7 +23,7 @@ int** calculate_distances(int** drivers, int** customers_initp, int** customers_
 	return distances;
 }
 
-int** calculate_time_and_fee(int** input_mat, int** drivers, int** customers_initp, int** customers_finalp, int number_of_drivers, int num_of_cus)
+int** calculate_time_and_cash(int** input_mat, int** drivers, int** customers_initp, int** customers_finalp, int number_of_drivers, int num_of_cus)
 {
 	int number_of_tasks = number_of_drivers <= num_of_cus ? num_of_cus : number_of_drivers;
 	int distance_start = 0;
@@ -41,9 +39,11 @@ int** calculate_time_and_fee(int** input_mat, int** drivers, int** customers_ini
 						distance_start = distance_start + abs(drivers[a][c] - customers_initp[b][c]);
 						distance_final = distance_final + abs(customers_initp[b][c] - customers_finalp[b][c]);
 					}
+					//create ouput matrix
 					ans[i][2] = (int)(((distance_start * 60) / vel));
 					ans[i][3] = (int)(((distance_final * 60) / vel));
 					ans[i][4] = (int)(distance_final * price);
+					//set value to 0 to cout again
 					distance_final = 0;
 					distance_start = 0;
 				}

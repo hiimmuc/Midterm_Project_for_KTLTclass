@@ -1,7 +1,0 @@
-/==========Your Bills==========/
-Your driver: dominic toretto 	 plate number:30f234567
-
->Estimate departure time: 4 minutes
->Estimate arrival time: 4minutes
->>Please prepare total cash: 40000,000 VND
-******THANKS FOR USING OUR SERVICE******
