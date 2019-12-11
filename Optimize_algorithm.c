@@ -365,8 +365,7 @@ int** assign_mat(int** assignable_mat, int num_of_rows, int num_of_cols) {
 	else if (count_2 == num_of_task) {
 		copy_mat(ans, temp2, num_of_rows, num_of_cols);
 	}
-	free(count_row); free(count_col); 
-	free_al(temp1, num_of_rows, num_of_cols); free_al(temp2, num_of_rows, num_of_cols);
+	free(count_row); free(count_col); free_al(temp1, num_of_rows, num_of_cols); free_al(temp2, num_of_rows, num_of_cols);
 	return ans;
 }
 /*==================================================================*/
@@ -443,9 +442,10 @@ int** hungarian_algo(int** input_mat, int num_of_rows, int num_of_cols)
 		for (i = 0; i < num_of_rows; ++i) {
 			for (j = 0; j < num_of_cols; ++j) {
 				if (pre_ans[i][j] == -8) {
-					final_result[k][0] = j;//customer column
-					final_result[k][1] = i;//driver column
-					final_result[k][2] = input_mat[i][j];//respectively distance column
+					printf_s("\ndriver %d[%d] will take customer %d[%d]", i + 1, i, j + 1, j);
+					final_result[k][0] = i;
+					final_result[k][1] = j;
+					final_result[k][2] = input_mat[i][j];
 					++k;
 				}
 			}

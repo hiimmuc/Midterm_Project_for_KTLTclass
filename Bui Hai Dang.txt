@@ -1,7 +1,7 @@
 /==========Your Bills==========/
-Your driver: ghost rider	 plate number: [29s134567]
+Your driver: dominic toretto 	 plate number:30f234567
 
->Estimate departure time: 8 minutes
->Estimate arrival time: 22 minutes
->>Please prepare total cash: 110,000 VND
+>Estimate departure time: 4 minutes
+>Estimate arrival time: 4minutes
+>>Please prepare total cash: 40000,000 VND
 ******THANKS FOR USING OUR SERVICE******
