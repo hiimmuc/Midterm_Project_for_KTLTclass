@@ -70,7 +70,7 @@ int main(int argc, char* argv[]) {
  >Customer phone: %s\n\
  >>Total cash: %d,000 VND\n>>THANK YOU<<\n\
 ***\n", result_2[i][1] + 1, drivers[i][0], drivers[i][1], cus_initp[result_2[i][0]][0], cus_initp[result_2[i][0]][1], result_2[i][0] + 1,c[result_2[i][0]].name, result_2[i][2], cus_finalp[result_2[i][0]][0], cus_finalp[result_2[i][0]][1], result_2[i][3],c[result_2[i][0]].phone, result_2[i][4]);
-		printf_s(">Driver [%d] confirm(y/n):  ", result_2[i][1] + 1); scanf_s("%c%*c", &ans); fflush(stdin);
+		printf_s(">Driver [%d] confirm(y/n):  ", result_2[i][1] + 1); scanf_s("%c", &ans); fflush(stdin);
 		if (ans == 'y' || ans == 'Y') {
 			printf_s("\n>Driver [%d] status: CONFIRMED\n", result_2[i][1] + 1);
 			printf_s("\nPress any keys to continue.....");
