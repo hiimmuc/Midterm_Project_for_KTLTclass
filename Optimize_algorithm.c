@@ -443,8 +443,8 @@ int** hungarian_algo(int** input_mat, int num_of_rows, int num_of_cols)
 			for (j = 0; j < num_of_cols; ++j) {
 				if (pre_ans[i][j] == -8) {
 					printf_s("\ndriver %d[%d] will take customer %d[%d]", i + 1, i, j + 1, j);
-					final_result[k][0] = i;
-					final_result[k][1] = j;
+					final_result[k][0] = j;
+					final_result[k][1] = i;
 					final_result[k][2] = input_mat[i][j];
 					++k;
 				}
