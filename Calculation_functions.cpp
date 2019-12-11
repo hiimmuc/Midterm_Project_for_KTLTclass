@@ -3,7 +3,7 @@
 #include "Supporting_functions.h"
 #include "Calculation_functions.h"
 #define vel 30
-#define price 10000
+#define price 10 //10k
 
 int** calculate_distances(int** drivers, int** customers_initp, int** customers_finalp, int num_of_drivers, int  num_of_customers) {
 	int** distances = allocate(num_of_drivers, num_of_customers);
