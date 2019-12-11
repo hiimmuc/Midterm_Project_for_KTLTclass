@@ -12,6 +12,7 @@
 //	num_task = row <= col ? row : col;
 //	printf_s("enter the matrix's elements:\n");
 //	scan_mat(mat, row, col);
+//  print_mat(mat,row,col);
 //	result = hungarian_algo(mat, row, col);
 //	printf_s("\nanswer:\n");
 //	print_mat(result, row, 3);
