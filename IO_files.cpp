@@ -172,9 +172,9 @@ void printBill(int numOfBill, billForCus* bill) {
         sprintf(filename, "%s.txt", bill[i].cusName);
         fp = fopen(filename, "w+");
         sprintf(buf, "/==========Your Bills==========/\n\
-Your driver: %s\t plate number:%s\n\n\
+Your driver: %s\t plate number: [%s]\n\n\
 >Estimate departure time: %d minutes\n\
->Estimate arrival time: %dminutes\n\
+>Estimate arrival time: %d minutes\n\
 >>Please prepare total cash: %d,000 VND\n\
 ******THANKS FOR USING OUR SERVICE******", bill[i].drvName, bill[i].pltNum, bill[i].time1, bill[i].time2, bill[i].cash);
         fputs(buf, fp);
