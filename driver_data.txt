@@ -1,16 +1,26 @@
-ghost rider
+Ghost Rider
 023456789
 29s134567
 position [4;7]
 =
-dominic toretto 
-0987654321
+Dominic Toretto 
+0137612321
 30f234567
 position [1;3]
 =
-paul walker
+Paul Walker
 0987162534
 346f7
 position [9;1]
+=
+Jason Statham
+0969696969
+123vn45
+position [1;2]
+=
+Bumble BEE
+0942378145
+hellohuman
+position [6;9]
 =
 end

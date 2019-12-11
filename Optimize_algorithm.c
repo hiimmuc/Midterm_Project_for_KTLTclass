@@ -12,7 +12,6 @@ int find_min(int *arr, int size) {
 	for (int i = 0; i < size; ++i) {
 		min = min <= arr[i] ? min : arr[i];
 	}
-
 	return min;
 }
 //subtract func in step 1 and 2
@@ -39,7 +38,6 @@ int** subtract_mat_1(int** mat, int num_of_rows, int num_of_cols) {
 			mat[j][i] = mat[j][i] - min; 
 		}
 	}
-	
 	free_al(col_arr,num_of_cols,num_of_rows);
 	return mat;
 } 
@@ -74,6 +72,7 @@ int** subtract_mat_2(int** mat,int** masked_mat, int num_of_rows, int num_of_col
 	}
 	//5
 	copy_mat(ans, mat,num_of_rows,num_of_cols);
+	free(temp);
 	return ans;
 }
 //draw minimun line through all zero elements in step 3
@@ -348,7 +347,7 @@ int** assign_mat(int** assignable_mat, int num_of_rows, int num_of_cols) {
 						}
 					}
 				}
-				//set the covered col'value equal numofcol+1 in oder to make the other col can be the minimum
+				//set the covered col's value equal numofcol+1 in oder to make the other col can be the minimum
 				for (int a = 0; a < num_of_cols; ++a) {
 					if (count_col[a] == 0) {
 						count_col[i] = num_of_cols + 1;
@@ -428,7 +427,8 @@ int** hungarian_algo(int** input_mat, int num_of_rows, int num_of_cols)
 		else{
 			number_of_crossed_lines = tmp2;
 			copy_mat(temp_mat, temp_mat2, num_of_rows, num_of_cols);
-		}
+		}//to choose the minimum number of crossed line
+		//if the crossed line is not equal num of task, we subtract 2nd time
 		if (number_of_crossed_lines != num_task) {
 			process_mat = subtract_mat_2(process_mat, temp_mat, num_of_rows, num_of_cols); 
 
@@ -442,7 +442,6 @@ int** hungarian_algo(int** input_mat, int num_of_rows, int num_of_cols)
 		for (i = 0; i < num_of_rows; ++i) {
 			for (j = 0; j < num_of_cols; ++j) {
 				if (pre_ans[i][j] == -8) {
-					printf_s("\ndriver %d[%d] will take customer %d[%d]", i + 1, i, j + 1, j);
 					final_result[k][0] = j;
 					final_result[k][1] = i;
 					final_result[k][2] = input_mat[i][j];

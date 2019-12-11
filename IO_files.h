@@ -26,6 +26,7 @@ extern "C" {
         char* cusName;
         char* drvName;
         char* pltNum;
+        char* phone;
         int cash, time1, time2;
     };
     typedef struct BillForCus billForCus;
