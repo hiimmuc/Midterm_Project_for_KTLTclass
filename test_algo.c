@@ -1,7 +1,7 @@
-//#include<stdio.h>
-//#include<conio.h>
-//#include"Supporting_functions.h"
-//#include"Optimize_algorithm.h"
+//#include <stdio.h>
+//#include <conio.h>
+//#include "Supporting_functions.h"
+//#include "Optimize_algorithm.h"
 //
 //void main() {
 //	int** mat, ** result;
@@ -10,8 +10,10 @@
 //	mat = allocate(row, col);
 //	result = allocate(row, col);
 //	num_task = row <= col ? row : col;
-//	printf_s("enter the matrix's elements:\n");
-//	scan_mat(mat, row, col);
+//	//printf_s("enter the matrix's elements:\n");
+//	//scan_mat(mat, row, col);
+//	mat = creat_random_matrix(row, col, 0, 36);
+//	print_mat(mat, row, col);
 //	result = hungarian_algo(mat, row, col);
 //	printf_s("\nanswer:\n");
 //	print_mat(result, row, 3);

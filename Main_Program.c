@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
 	//optimize
 	result = hungarian_algo(mat, row, col);
 	//calculate time and cash
-	result_2 = calculate_time_and_cash(result, drivers, cus_initp, cus_finalp, row, col, 1);
+	result_2 = calculate_time_and_cash(result, drivers, cus_initp, cus_finalp, row, col);
 	//print bill
 	billForCus* Bills = (billForCus*)malloc(num_of_cus * sizeof(billForCus));
 	constructBill(num_of_cus, Bills, result_2, c, d);
@@ -60,7 +60,7 @@ int main(int argc, char* argv[]) {
 	char ans;
 	printf_s("\nPress any keys to continue.....");
 	_getch();
-	printf_s("\nCommand List:\n");
+	//
 	for (int i = 0; i < num_task; ++i) {
 		system("cls");
 		printf_s("\n/>Driver [%d] in ( %d, %d) please move to ( %d, %d) to take customer [%d]\n\
@@ -70,24 +70,31 @@ int main(int argc, char* argv[]) {
  >Customer phone: %s\n\
  >>Total cash: %d,000 VND\n>>THANK YOU<<\n\
 ***\n", result_2[i][1] + 1, drivers[i][0], drivers[i][1], cus_initp[result_2[i][0]][0], cus_initp[result_2[i][0]][1], result_2[i][0] + 1,c[result_2[i][0]].name, result_2[i][2], cus_finalp[result_2[i][0]][0], cus_finalp[result_2[i][0]][1], result_2[i][3],c[result_2[i][0]].phone, result_2[i][4]);
-		printf_s(">Driver [%d] confirm(y/n):  ", result_2[i][1] + 1); scanf_s("%c", &ans); fflush(stdin);
+		printf_s("/>Driver [%d] confirm(y/n):  ", result_2[i][1] + 1); scanf_s("%c%*c", &ans); fflush(stdin);
+		/*while (getchar() != '\n'); ans = getchar();*/
 		if (ans == 'y' || ans == 'Y') {
-			printf_s("\n>Driver [%d] status: CONFIRMED\n", result_2[i][1] + 1);
+			printf_s("\n/>Driver [%d] status: CONFIRMED\n", result_2[i][1] + 1);
 			printf_s("\nPress any keys to continue.....");
 			_getch();
 		}
 		else if (ans == 'n' || ans == 'N') {
-			printf_s("\n>Driver [%d] status: not confirmed\n", result_2[i][1] + 1);
+			printf_s("\n/>Driver [%d] status: not confirmed\n", result_2[i][1] + 1);
 			printf_s("\nPress any keys to continue.....");
 			_getch();
 		}
 	}
 	system("cls");
+	printf_s("\nCommand List:\n");
 	for (int i = 0; i < num_task; ++i) {
-		printf_s("\nDriver[%d] will take customer [%d]", result[i][1] + 1, result[i][0] + 1);
+		printf_s("\n/>Driver[%d] will take customer [%d]", result[i][1] + 1, result[i][0] + 1);
 	}
-	printf_s("\n\n\tHave a nice trip\n\t ++++GOOD BYE++++\n\
+	printf_s("\n\n\t Have a nice trip\n\t ++++GOOD BYE++++\n\
 /*===========================================================*/");
+	//update driver posotions
+
+	updateDrvData(num_of_drv, c, d, result_2);
+
+	/*====================================================================================================================*/
 	//free memories
 	free(c); free(d); free_al(cusCipMat,num_of_cus,2); free_al(CusCfpMat, num_of_cus, 2); free_al(DrvDpMat, num_of_drv, 2);
 	free_al(result_2, num_task, 5);

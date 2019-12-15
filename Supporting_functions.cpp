@@ -1,7 +1,8 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<conio.h>
-#include"Supporting_functions.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <time.h>
+#include "Supporting_functions.h"
 //allocate func
 int** allocate(int number_of_row, int number_of_cols) {
 	int** arr = (int**)malloc(number_of_row * sizeof(int*));
@@ -28,7 +29,7 @@ void print_mat(int** arr, int num_of_rows, int num_of_cols)
 	printf_s("\n");
 	for (int i = 0; i < num_of_rows; ++i) {
 		for (int j = 0; j < num_of_cols; ++j) {
-			printf("%-4d", arr[i][j]);
+			printf("%3d", arr[i][j]);
 		}
 		printf("\n");
 	}
@@ -87,4 +88,21 @@ void print_map(int** driver, int** cus_initp, int numd, int numc) {
 		}
 		printf_s("\n"); printf_s("\n");
 	}
+}
+
+int** creat_random_matrix(int row, int col, int min_range, int max_range)
+{
+		time_t t;
+		srand((int)time(&t));
+		int* temp = (int*)calloc((row * col), sizeof(int));
+		int** ans = allocate(row, col);
+		for (int i = 0; i < (row * col); ++i) {
+			temp[i] = (min_range + rand() % (max_range + 1 - min_range));
+		}
+		for (int i = 0; i < row; ++i) {
+			for (int j = 0; j < col; ++j) {
+				ans[i][j] = (int)(*(temp + (i * row) + j));
+			}
+		}
+		return ans;
 }

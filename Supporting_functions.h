@@ -13,6 +13,7 @@ extern "C" {
 	int** scan_mat(int** arr, int num_of_rows, int num_of_cols);
 	void copy_mat(int** mat1, int** mat2, int row, int col);
 	void print_map(int** driver, int** cus_initp, int numd, int numc);
+	int** creat_random_matrix(int row, int col, int min_range, int max_range);
 #ifdef __cplusplus
 }
 #endif
