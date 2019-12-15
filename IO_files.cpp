@@ -142,6 +142,20 @@ void getDrvDp(int** DrvDpMat, driver* d, int numOfDrv) {
         DrvDpMat[i][1] = d[i].dp[1];
     }
 }
+/*===========================================================================================*/
+void updateDrvData(int numOfDrv, customer* c, driver* d, int** result_2) {
+    FILE* fp;
+    char* buf;
+    int i;
+    fp = fopen("driver_data.txt", "w+");
+    for (i = 0; i < numOfDrv; i++) {
+        buf = (char*)malloc(500 * sizeof(char));
+        sprintf(buf, "%s\n%s\n%s\nposition [%d;%d]\n=\n", d[i].name, d[i].phone, d[i].numberPlt, c[result_2[i][1]].cfp[0], c[result_2[i][1]].cfp[1]);
+        fputs(buf, fp);
+        free(buf);
+    }
+    fclose(fp);
+}
 /*===============================================================================================*/
 billForCus* constructBill(int num, billForCus* bill, int** timeCashMat, customer* c, driver* d) {
     int i;
