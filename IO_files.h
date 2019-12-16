@@ -40,6 +40,7 @@ extern "C" {
     void getCusCip(int** CusCipMat, customer* c, int numOfCus);//to get the present position of customer
     void getCusCfp(int** CusCfpMat, customer* c, int numOfCus);//to get the final position of driver
     void getDrvDp(int** DrvDpMat, driver* d, int numOfDrv);//to get the present position of driver
+    void updateCusData(int numOfcus, customer* c);
     void updateDrvData(int numOfDrv, customer* c, driver* d, int** result_2);//update drv position after a ride
     //output part
     billForCus* constructBill(int num, billForCus* bill, int** timeCashMat, customer* c, driver* d);

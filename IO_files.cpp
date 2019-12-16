@@ -143,6 +143,7 @@ void getDrvDp(int** DrvDpMat, driver* d, int numOfDrv) {
     }
 }
 /*===========================================================================================*/
+//update information part
 void updateDrvData(int numOfDrv, customer* c, driver* d, int** result_2) {
     FILE* fp;
     char* buf;
@@ -151,6 +152,19 @@ void updateDrvData(int numOfDrv, customer* c, driver* d, int** result_2) {
     for (i = 0; i < numOfDrv; i++) {
         buf = (char*)malloc(500 * sizeof(char));
         sprintf(buf, "%s\n%s\n%s\nposition [%d;%d]\n=\n", d[i].name, d[i].phone, d[i].numberPlt, c[result_2[i][1]].cfp[0], c[result_2[i][1]].cfp[1]);
+        fputs(buf, fp);
+        free(buf);
+    }
+    fclose(fp);
+}
+void updateCusData(int numOfcus, customer* c) {
+    FILE* fp;
+    char* buf;
+    int i;
+    fp = fopen("customer_data.txt", "w+");
+    for (i = 0; i < numOfcus; ++i) {
+        buf = (char*)malloc(500 * sizeof(char));
+        sprintf(buf, "%s%sDeparting point: [%d;%d]\nArriving point: [%d;%d]\n=\n", c[i].name, c[i].phone, c[i].cip[0], c[i].cip[1], c[i].cfp[0], c[i].cfp[1]);
         fputs(buf, fp);
         free(buf);
     }
