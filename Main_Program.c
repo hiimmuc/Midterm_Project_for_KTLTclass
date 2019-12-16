@@ -88,7 +88,7 @@ int main(int argc, char* argv[]) {
 	for (int i = 0; i < num_task; ++i) {
 		printf_s("\n/>Driver[%d] will take customer [%d]", result[i][1] + 1, result[i][0] + 1);
 	}
-	printf_s("\n\n\t Have a nice trip\n\t ++++GOOD BYE++++\n\
+	printf_s("\n\n\t Have a nice trip\n\t ++++GOOD BYE++++\n\n\tVUI VE? KHONG QUAU. :D \n\
 /*===========================================================*/");
 	//update driver posotions
 
